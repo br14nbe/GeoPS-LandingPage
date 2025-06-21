@@ -200,6 +200,46 @@ nav {
     font-size: 1rem;
 }
 
+/* Features Section */
+.features {
+    padding: 4rem 2rem;
+    background: #f8fafc;
+    text-align: center;
+}
+
+.features h2 {
+    margin-bottom: 0.5rem;
+}
+
+.features span {
+    display: block;
+    color: var(--text-light);
+    margin-bottom: 3rem;
+}
+
+.features-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(250px, 300px));
+    gap: 10rem;
+    justify-content: center;
+}
+
+.feature-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.feature-card img {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 1rem;
+}
+
+
 /* Sell Better */
 .sell-better {
     max-width: 1200px;
