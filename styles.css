@@ -200,6 +200,69 @@ nav {
     font-size: 1rem;
 }
 
+/* Sell Better */
+.sell-better {
+    max-width: 1200px;
+    margin: 6rem auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    background: linear-gradient(to right, rgba(255, 240, 245, 0.5), rgba(255, 240, 245, 0.1));
+    border-radius: 20px;
+}
+
+.sell-content h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-dark);
+}
+
+.sell-content p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-light);
+    margin-bottom: 2rem;
+}
+
+.sell-content .cta-button {
+    background-color: var(--primary-blue);
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.sell-content .cta-button:hover {
+    background-color: #1d4ed8;
+}
+
+.sell-image img {
+    width: 100%;
+    height: auto;
+    max-width: 400px;
+}
+
+@media (max-width: 768px) {
+    .sell-better {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .sell-image {
+        order: -1;
+    }
+
+    .sell-content h2 {
+        font-size: 2rem;
+    }
+}
+
 /* CTA Section */
 .cta {
     max-width: 1200px;
