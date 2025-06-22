@@ -1,4 +1,3 @@
-// Animación suave para el scroll
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
@@ -27,7 +26,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Animación de números en la sección de estadísticas
 function animateValue(obj, start, end, duration) {
     let startTimestamp = null;
     const step = (timestamp) => {
@@ -41,7 +39,6 @@ function animateValue(obj, start, end, duration) {
     window.requestAnimationFrame(step);
 }
 
-// Observador de intersección para activar las animaciones cuando los elementos sean visibles
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -55,13 +52,11 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, { threshold: 0.5 });
 
-// Observar la sección de estadísticas
 const statsSection = document.querySelector('.stats-grid');
 if (statsSection) {
     observer.observe(statsSection);
 }
 
-// Menú móvil
 const navToggle = document.querySelector('.nav-toggle');
 const navLinks = document.querySelector('.nav-links');
 
@@ -90,23 +85,20 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Testimonial Slider
 const testimonialTrack = document.querySelector('.testimonial-track');
 const testimonials = document.querySelectorAll('.testimonial-card');
 
-// Clone testimonials for infinite effect
 testimonials.forEach(testimonial => {
     const clone = testimonial.cloneNode(true);
     testimonialTrack.appendChild(clone);
 });
 
 let position = 0;
-const speed = 2; // pixels per frame
+const speed = 2;
 
 function moveSlider() {
     position -= speed;
 
-    // Reset position when all original slides have passed
     if (position <= -(testimonials.length * testimonials[0].offsetWidth)) {
         position = 0;
     }
@@ -117,7 +109,6 @@ function moveSlider() {
 
 moveSlider();
 
-// FAQ Accordions
 const faqItems = document.querySelectorAll('.faq-item');
 
 faqItems.forEach(item => {
@@ -127,7 +118,6 @@ faqItems.forEach(item => {
     question.addEventListener('click', () => {
         const isActive = item.classList.contains('active');
 
-        // Cierra todos
         faqItems.forEach(i => {
             i.classList.remove('active');
             const ans = i.querySelector('.faq-answer');
