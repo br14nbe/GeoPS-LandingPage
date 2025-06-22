@@ -27,6 +27,40 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+// Animación de números en la sección de estadísticas
+function animateValue(obj, start, end, duration) {
+    let startTimestamp = null;
+    const step = (timestamp) => {
+        if (!startTimestamp) startTimestamp = timestamp;
+        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+        obj.innerHTML = Math.floor(progress * (end - start) + start).toLocaleString();
+        if (progress < 1) {
+            window.requestAnimationFrame(step);
+        }
+    };
+    window.requestAnimationFrame(step);
+}
+
+// Observador de intersección para activar las animaciones cuando los elementos sean visibles
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const statsNumbers = entry.target.querySelectorAll('.stat-item h3');
+            statsNumbers.forEach(number => {
+                const finalValue = parseInt(number.textContent.replace(/,/g, ''));
+                animateValue(number, 0, finalValue, 2000);
+            });
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.5 });
+
+// Observar la sección de estadísticas
+const statsSection = document.querySelector('.stats-grid');
+if (statsSection) {
+    observer.observe(statsSection);
+}
+
 // Menú móvil
 const navToggle = document.querySelector('.nav-toggle');
 const navLinks = document.querySelector('.nav-links');
