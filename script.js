@@ -90,6 +90,33 @@ window.addEventListener('scroll', () => {
     }
 });
 
+// Testimonial Slider
+const testimonialTrack = document.querySelector('.testimonial-track');
+const testimonials = document.querySelectorAll('.testimonial-card');
+
+// Clone testimonials for infinite effect
+testimonials.forEach(testimonial => {
+    const clone = testimonial.cloneNode(true);
+    testimonialTrack.appendChild(clone);
+});
+
+let position = 0;
+const speed = 2; // pixels per frame
+
+function moveSlider() {
+    position -= speed;
+
+    // Reset position when all original slides have passed
+    if (position <= -(testimonials.length * testimonials[0].offsetWidth)) {
+        position = 0;
+    }
+
+    testimonialTrack.style.transform = `translateX(${position}px)`;
+    requestAnimationFrame(moveSlider);
+}
+
+moveSlider();
+
 // FAQ Accordions
 const faqItems = document.querySelectorAll('.faq-item');
 
